@@ -1,0 +1,5 @@
+db:
+  uri: "mongodb://psm:psm123@localhost/psm"
+cookieSecret: "yacBigbiekCaliapIapGenEfoftAsinVekhobackendEthifeckwikBomNiancee"
+port: 8080
+host: "0.0.0.0"
