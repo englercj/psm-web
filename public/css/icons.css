@@ -1,0 +1,33 @@
+#nav a { background:center 10px no-repeat; }
+
+#nav a.dash { background-image:url(../img/icons/dashboard_grey.png); }
+#nav a.dash:hover,
+#nav a.dash.selected { background-image:url(../img/icons/dashboard.png); }
+
+#nav a.players { background-image:url(../img/icons/players_grey.png); }
+#nav a.players:hover,
+#nav a.players.selected { background-image:url(../img/icons/players.png); }
+
+#nav a.worlds { background-image:url(../img/icons/worlds_grey.png); }
+#nav a.worlds:hover,
+#nav a.worlds.selected { background-image:url(../img/icons/worlds.png); }
+
+#nav a.plugins { background-image:url(../img/icons/plugins_grey.png); }
+#nav a.plugins:hover,
+#nav a.plugins.selected { background-image:url(../img/icons/plugins.png); }
+
+#nav a.updates { background-image:url(../img/icons/updates_grey.png); }
+#nav a.updates:hover,
+#nav a.updates.selected { background-image:url(../img/icons/updates.png); }
+
+#nav a.users { background-image:url(../img/icons/users_grey.png); }
+#nav a.users:hover,
+#nav a.users.selected { background-image:url(../img/icons/users.png); }
+
+#nav a.servers { background-image:url(../img/icons/servers_grey.png); }
+#nav a.servers:hover,
+#nav a.servers.selected { background-image:url(../img/icons/servers.png); }
+
+#nav a.settings { background-image:url(../img/icons/settings_grey.png); }
+#nav a.settings:hover,
+#nav a.settings.selected { background-image:url(../img/icons/settings.png); }

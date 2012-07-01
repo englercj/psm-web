@@ -1,0 +1,81 @@
+* {
+    margin:0;
+    padding:0;
+    font-size:1em;
+    font-weight:normal;
+    font-family:
+}
+
+/* Element Styles */
+body {
+    background:center top url(http://images3.alphacoders.com/489/48957.jpg) no-repeat #000;
+    /*background:center -160px url(http://hdwallp.wikispaces.com/file/view/hd-wallpaper-glow1%5B1%5D.jpg/208749014/hd-wallpaper-glow1%5B1%5D.jpg) no-repeat #000;*/
+    /*background:center top url(http://www.wallsave.com/wallpapers/1920x1200/d-abstract-art-x/596010/d-abstract-art-x-desktop-backgrounds-hd-596010.jpg) no-repeat #000;*/
+}
+
+/* General Classes */
+
+/* Wrapper */
+#wrapper { width:1024px; margin:0 auto; }
+
+/* Logo */
+#logo {
+    font-size:3em;
+    float:left;
+    margin-bottom:25px;
+    font-family:'Century Gothic',futura,'URW Gothic L',Verdana,sans-serif;
+
+    color:#F7F7F7;
+}
+
+/* Main Content */
+#main {
+    background:#F7F7F7;
+}
+
+/* Navigation Menu */
+#nav {
+    height:70px;
+    clear:both;
+
+    border-radius:5px 5px 0 0;
+
+    background: #252525; /* Old browsers */
+    background: -moz-linear-gradient(top,  #252525 0%, #000000 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#252525), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #252525 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #252525 0%,#000000 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #252525 0%,#000000 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #252525 0%,#000000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#252525', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+#nav li {
+    float:left;
+    list-style:none;
+
+    border-right:solid 1px #222;
+}
+
+#nav li:last-child {
+    border-right:none;
+}
+
+#nav a {
+    display:block;
+    height:70px;
+    width:127px;
+
+    text-align:center;
+    line-height:105px;
+    font-family:'Century Gothic',futura,'URW Gothic L',Verdana,sans-serif;
+    /*font-family:'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;*/
+    font-weight:bold;
+
+    color:#888;
+}
+
+#nav a:hover, #nav a.selected {
+    color:#0552E0;/*#008CDB;*/
+    cursor:pointer;
+}

@@ -3,7 +3,8 @@ html(lang="en")
   head
     include ../includes/head
   body
-    include ../includes/header
-    div#main
-      != body
-    include ../includes/foot
+    div#wrapper
+      include ../includes/header
+      div#main
+        != body
+      include ../includes/foot
