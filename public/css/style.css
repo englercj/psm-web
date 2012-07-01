@@ -7,6 +7,18 @@
 }
 
 /* Element Styles */
+font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('BebasNeue-webfont.eot');
+    src: url('BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('BebasNeue-webfont.woff') format('woff'),
+         url('BebasNeue-webfont.ttf') format('truetype'),
+         url('BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
     background:center top url(http://images3.alphacoders.com/489/48957.jpg) no-repeat #000;
     /*background:center -160px url(http://hdwallp.wikispaces.com/file/view/hd-wallpaper-glow1%5B1%5D.jpg/208749014/hd-wallpaper-glow1%5B1%5D.jpg) no-repeat #000;*/
@@ -14,6 +26,9 @@ body {
 }
 
 /* General Classes */
+.clear { clear:both; }
+.floatL { float:left; }
+.floatR { float:right; }
 
 /* Wrapper */
 #wrapper { width:1024px; margin:0 auto; }
@@ -31,6 +46,56 @@ body {
 /* Main Content */
 #main {
     background:#F7F7F7;
+    padding:20px;
+}
+
+#performance {
+    background:#333;
+    border:solid 1px #111;
+
+    border-radius:5px;
+    box-shadow:0 0 5px 1px #111;
+    padding:10px;
+}
+
+/* Circular Indicator */
+#performance > div {
+    margin:0 20px 0 20px;
+}
+
+#performance > div > h4 {
+    font-family:'Century Gothic',futura,'URW Gothic L',Verdana,sans-serif;
+    font-weight:bold;
+    font-size:1.2em;
+
+    color:#151515;
+    text-shadow:0 1px 1px #444;
+}
+
+#performance div.meter {
+    margin-left:2px;
+}
+
+.meter {
+    width:100px;
+    height:100px;
+}
+
+.jCProgress {
+    position:absolute;
+    z-index:9999999;
+/* margin-top:-15px; /* offset from the center */
+}
+
+.jCProgress > div.percent {
+    /*font:18px/27px 'BebasNeueRegular', Arial, sans-serif;*/
+    color:#ebebeb;
+    text-shadow:1px 1px 1px #1f1f1f;
+    position:absolute;
+    margin-top:45px;
+    margin-left:25px;
+    text-align:center;
+    width:60px;
 }
 
 /* Navigation Menu */

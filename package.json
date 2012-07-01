@@ -19,6 +19,7 @@
 	"connect-mongodb": "1.1.x",
 	"mongoose-auth": "0.0.x",
 	"express-messages": "0.0.x",
+	"request": "2.9.x",
 	"dateformat": ">= 1"
     },
     "devDependencies": {},

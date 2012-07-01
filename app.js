@@ -31,8 +31,7 @@ var app = express.createServer();
 require('./lib/configure').boot(app, config);
 
 app.get('/', function(req, res) {
-    res.local('pageTitle', 'Panther Server Manager');
-    res.render('home');
+    res.render('home', { title: 'Panther Server Manager' });
 });
 
 //Load Controllers
@@ -40,7 +39,7 @@ var cDir = path.join(__dirname, 'app', 'controllers'),
 cFiles = fs.readdirSync(cDir);
 
 cFiles.forEach(function(file) {
-    require(path.join(cDir, file))
+    require(path.join(cDir, file))(app);
 });
 
 //Load Error handlers
