@@ -27,11 +27,11 @@ $(function() {
 	    mem = 1 - (data.status.freemem / data.status.totalmem);
 	    console.log(cpu, mem);
 	    $('#performance .cpu .meter').cprogress({
-		img1: '/img/progress_bg.png', img2: '/img/progress_fg.png',
+		img1: '/img/progress_bg2.png', img2: '/img/progress_fg2.png',
 		speed: 25, PIStep: cpu / 10, limit: Math.round(cpu * 100), loop: false
 	    });
 	    $('#performance .mem .meter').cprogress({
-		img1: '/img/progress_bg.png', img2: '/img/progress_fg.png',
+		img1: '/img/progress_bg2.png', img2: '/img/progress_fg2.png',
 		speed: 25, PIStep: mem / 10, limit: Math.round(mem * 100), loop: false
 	    });
 	} else {
