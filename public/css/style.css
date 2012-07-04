@@ -81,13 +81,7 @@ body {
     height:100px;
 }
 
-.jCProgress {
-    position:absolute;
-    z-index:9999999;
-/* margin-top:-15px; /* offset from the center */
-}
-
-.jCProgress > div.percent {
+.cprogress-text {
     /*font:18px/27px 'BebasNeueRegular', Arial, sans-serif;*/
     color:#ebebeb;
     text-shadow:1px 1px 1px #1f1f1f;

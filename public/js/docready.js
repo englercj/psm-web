@@ -8,7 +8,6 @@ $(function() {
 
     //load status of PSM box
     $.getJSON('/system/status', function(data, textStatus, jqXHR) {
-	console.log(data, textStatus, jqXHR);
 	if(data.success) {
 	    var totalCpuTime = 0,
 	    idleCpuTime = 0;
@@ -25,14 +24,14 @@ $(function() {
 
 	    var cpu = 1 - (idleCpuTime / totalCpuTime),
 	    mem = 1 - (data.status.freemem / data.status.totalmem);
-	    console.log(cpu, mem);
+
 	    $('#performance .cpu .meter').cprogress({
-		img1: '/img/progress_bg2.png', img2: '/img/progress_fg2.png',
-		speed: 25, PIStep: cpu / 10, limit: Math.round(cpu * 100), loop: false
+		fg: '/img/progress_fg.png', bg: '/img/progress_bg.png',
+		value: Math.round(cpu * 100)
 	    });
 	    $('#performance .mem .meter').cprogress({
-		img1: '/img/progress_bg2.png', img2: '/img/progress_fg2.png',
-		speed: 25, PIStep: mem / 10, limit: Math.round(mem * 100), loop: false
+		fg: '/img/progress_fg.png', bg: '/img/progress_bg.png',
+		value: Math.round(mem * 100)
 	    });
 	} else {
 	    
