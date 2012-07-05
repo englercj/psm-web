@@ -25,8 +25,27 @@
         //setup psm status box
         setupPsmStatusBox();
 
+	//setup console control
+	setupConsole();
+
 	$('button').eq(1).button('disable');
     });
+
+    function setupConsole() {
+	var $input = $('#console input');
+
+	$input.on('keypress', function(e) {
+	    if(e.which == 13) {
+		e.preventDefault();
+
+		//send command
+		api.doCommand($input.val(), 'crafttest', function(err, data) {
+		    console.log(err, data);
+		});
+		$input.val('');
+	    }
+	});
+    }
 
     function setupSocketListeners() {
 	api.socket.on('output', function(msg) {
@@ -146,9 +165,13 @@
             }
         });
 
+	//animates from 0 (no data) to val (set data)
+	//basically provides the calculations for step so we
+	//can do the animation via setting the value option
+	//of the progressbar
         $elm.animate(
             {
-                'data-value': val
+                'data-psm-value': val
             },
             {
                 duration: 2000,
