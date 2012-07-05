@@ -20,7 +20,9 @@
 	"mongoose-auth": "0.0.x",
 	"express-messages": "0.0.x",
 	"request": "2.9.x",
-	"dateformat": ">= 1"
+	"dateformat": ">= 1",
+	"socket.io": "0.9.x",
+	"socket.io-client": "0.9.x"
     },
     "devDependencies": {},
     "private": true

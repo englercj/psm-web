@@ -1,5 +1,8 @@
 (function($) {
     $(function() {
+        //init api
+        api.init();
+
         //Menu ui stuff
         $('a.dash').addClass('selected');
         $('#nav a').on('click', function(e) {
@@ -7,8 +10,40 @@
             $(this).addClass('selected');
         });
 
+	//Setup dashboard tabs
+	$('#content').tabs();
+
+        //show loader on performance
         $('#performance .loader').show();
 
+	//setup ui buttons
+	$('button').button();
+
+        //setup listeners for socket
+        setupSocketListeners();
+
+        //setup psm status box
+        setupPsmStatusBox();
+
+	$('button').eq(1).button('disable');
+    });
+
+    function setupSocketListeners() {
+	api.socket.on('output', function(msg) {
+	    var $pre = $('#console pre');
+
+	    for(var i = 0, line; line = msg.lines[i]; ++i) {
+		$pre.append(util.tagOutput(line) + '\n');
+	    }
+	});
+
+	api.socket.on('player::chat', function(chat) {
+	    console.log('CHAT:', chat);
+	});
+    }
+
+
+    function setupPsmStatusBox() {
         //load status of PSM box
         api.getSystemStatus(function(err, data) {
             if(err) return;
@@ -16,18 +51,23 @@
             api.getServerStatus('crafttest', function(err, server) {
                 if(err) return;
 
-                var totalCpuTime = 0,
+                var $info = $('#performance ul li.info'),
+		$players = $('#performance ul li.players'),
+		$system = $('#performance ul li.system'),
+		$ctrl = $('#performance ul li.control'),
+		totalCpuTime = 0,
                 idleCpuTime = 0;
 
                 //hide the loader
                 $('#performance .loader').hide();
+		$('#performance ul').show();
 
-		//server title
-                $('#performance h2').show().text(server.data.properties['server-name']);
+                //server title
+                $('h2', $info).text(server.data.properties['server-name']);
 
                 //add host type
-                $('#performance').append('<h6><b>Minecraft Version:</b> v' + server.data.mcversion + '</h6>');
-		$('#performance').append('<h6><b>Craftbukkit Build:</b> ' + server.data.cbversion + '</h6>');
+                $('h6.mcversion', $info).append(' v' + server.data.mcversion);
+                $('h6.cbversion', $info).append(' ' + server.data.cbversion);
 
                 //aggregate the status of the system
                 for(var i = 0, len = data.status.cpus.length; i < len; ++i) {
@@ -42,40 +82,31 @@
 
                 var stats = [
                     {
-                        title: 'Players Connected',
-                        name: 'players',
                         val: 16,
                         max: data.status.maxPlayers || 32,
                         fmt: '{v} / {m}',
-                        divisor: 1
+                        divisor: 1,
+			$meter: $('#players .meter')
                     },
                     {
-                        title: 'CPU Usage',
-                        name: 'cpu',
                         val: totalCpuTime - idleCpuTime,
                         max: totalCpuTime,
                         fmt: '{p}%',
-                        divisor: 1
+                        divisor: 1,
+			$meter: $('#cpu .meter')
                     },
                     {
-                        title: 'RAM Usage',
-                        name: 'ram',
                         val: data.status.totalmem - data.status.freemem,
                         max: data.status.totalmem,
                         fmt: '{v} / {m} MB',
-                        divisor: 1048576
+                        divisor: 1048576,
+			$meter: $('#ram .meter')
                     }
                 ];
 
                 //create each stat graph
                 stats.forEach(function(stat) {
-                    var $div = $('<div/>').addClass(stat.name),
-                    $title = $('<h5/>').text(stat.title).appendTo($div),
-                    $meter = $('<div/>').addClass('meter').appendTo($div),
-                    $val = $('<span/>').appendTo($meter);
-
-                    $('#performance').append($div);
-                    createProgressbar($meter, stat.val, stat.max, stat.fmt, stat.divisor);
+                    createProgressbar(stat.$meter, stat.val, stat.max, stat.fmt, stat.divisor);
                 });
 
                 /*
@@ -90,42 +121,42 @@
                 */
             });
         });
+    }
 
-        function createProgressbar($elm, val, max, format, divisor) {
-            var $span = $elm.find('span');
+    function createProgressbar($elm, val, max, format, divisor) {
+        var $span = $elm.find('span');
 
-            divisor = divisor || 1;
+        divisor = divisor || 1;
 
-            $elm.progressbar({
-                change: function(event, ui) {
-                    var step = $(event.target).progressbar('option', 'value'),
-                    fval = (max * (step / 100)) / divisor,
-                    fmax = max / divisor,
-                    txt = format.replace('{v}', fval.toFixed())
-                        .replace('{m}', fmax.toFixed())
-                        .replace('{p}', step.toFixed());
+        $elm.progressbar({
+            change: function(event, ui) {
+                var step = $(event.target).progressbar('option', 'value'),
+                fval = (max * (step / 100)) / divisor,
+                fmax = max / divisor,
+                txt = format.replace('{v}', fval.toFixed())
+                    .replace('{m}', fmax.toFixed())
+                    .replace('{p}', step.toFixed());
 
-                    $span.text(txt);
+                $span.text(txt);
 
-                    if(step >= 50)
-                        $span.addClass('invert');
-                    else
-                        $span.removeClass('invert');
+                if(step >= 50)
+                    $span.addClass('invert');
+                else
+                    $span.removeClass('invert');
+            }
+        });
+
+        $elm.animate(
+            {
+                'data-value': val
+            },
+            {
+                duration: 2000,
+                easing: 'easeOutCubic',
+                step: function(step) {
+                    $elm.progressbar('option', 'value', step / max * 100);
                 }
-            });
-
-            $elm.animate(
-                {
-                    'data-value': val
-                },
-                {
-                    duration: 2000,
-                    easing: 'easeOutCubic',
-                    step: function(step) {
-                        $elm.progressbar('option', 'value', step / max * 100);
-                    }
-                }
-            );
-        }
-    });
+            }
+        );
+    }
 })(jQuery);

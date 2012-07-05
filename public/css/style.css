@@ -50,6 +50,12 @@ b { font-weight:bold; }
 
 .hidden { display:none; }
 
+.timestamp { color:grey; }
+.info { color:cyan; }
+.warn { color:goldenrod; }
+.severe { color:orangered; }
+.fatal { color:red; }
+
 /* Wrapper */
 #wrapper { width:1024px; margin:0 auto; }
 
@@ -76,7 +82,7 @@ b { font-weight:bold; }
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
     margin-bottom: 20px;
     min-height: 20px;
-    padding: 19px;
+    padding: 5px;
 
 /*
     background:#333;
@@ -88,13 +94,10 @@ b { font-weight:bold; }
 */
 }
 
-/* Chatbox */
+/* Console boxes */
 .chat {
     float:left;
     width:585px;
-
-    border-radius:4px 4px 0 0;
-    border:solid 1px #AAA;
 }
 
 .chat h3 {
@@ -119,36 +122,45 @@ b { font-weight:bold; }
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#049cdb', endColorstr='#0064cd',GradientType=0 ); /* IE6-9 */
 }
 
-.chat pre {
+#console pre, #chat pre {
     min-height:300px;
     background:#111;
     color:#fff;
+    overflow:auto;
+    padding:5px;
 }
 
-.chat input {
+#console input, #chat input {
     width:100%;
     border:none;
 }
 
 /* Performance Dashboard */
-#performance {
-    float:right;
-}
-
 #performance h2 { margin:0; }
+#performance h4 { margin:0 0 5px 0; font-weight:bold; }
+#performance h5 { margin:0; font-size:1em; }
 #performance h6 { margin:0; font-size:0.9em; }
 
-#performance > div {
-    margin:0 20px 0 20px;
+#performance ul li {
+    list-style:none;
+    float:left;
+    width:25%;
 }
 
-.ui-progressbar {
-    width:300px;
+#performance li.control { text-align:center; }
+#performance li.control button {
+    margin:2px 0;
+    width:225px;
+}
+
+.meter {
+    width:225px;
     margin:0 auto;
+    margin-bottom:5px;
 }
 
-.ui-progressbar span {
-    width:300px;
+.meter span {
+    width:225px;
     position:absolute;
     text-align:center;
     font-weight:bold;
