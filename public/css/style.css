@@ -20,15 +20,35 @@ font-face {
 }
 
 body {
+    color:#404040;
     background:center top url(http://images3.alphacoders.com/489/48957.jpg) no-repeat #000;
-    /*background:center -160px url(http://hdwallp.wikispaces.com/file/view/hd-wallpaper-glow1%5B1%5D.jpg/208749014/hd-wallpaper-glow1%5B1%5D.jpg) no-repeat #000;*/
-    /*background:center top url(http://www.wallsave.com/wallpapers/1920x1200/d-abstract-art-x/596010/d-abstract-art-x-desktop-backgrounds-hd-596010.jpg) no-repeat #000;*/
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Century Gothic',futura,'URW Gothic L',Verdana,sans-serif;
+    font-weight:bold;
+    text-align:center;
+
+    margin-bottom:10px;
+    
+    color:#404040;
+}
+
+h1 { font-size:1.5em; }
+h2 { font-size:1.4em; }
+h3 { font-size:1.3em; }
+h4 { font-size:1.2em; font-weight:normal; margin:5px 0; }
+h5 { font-size:1.1em; font-weight:normal; margin:15px 0 5px 0; }
+h6 { font-size:1em; font-weight:normal; margin:5px 0; }
+
+b { font-weight:bold; }
 
 /* General Classes */
 .clear { clear:both; }
 .floatL { float:left; }
 .floatR { float:right; }
+
+.hidden { display:none; }
 
 /* Wrapper */
 #wrapper { width:1024px; margin:0 auto; }
@@ -40,46 +60,116 @@ body {
     margin-bottom:25px;
     font-family:'Century Gothic',futura,'URW Gothic L',Verdana,sans-serif;
 
-    color:#F7F7F7;
+    color:#0064CD;
 }
 
 /* Main Content */
 #main {
-    background:#F7F7F7;
+    background:#FFF;
     padding:20px;
 }
 
-#performance {
+.well {
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+
+/*
     background:#333;
     border:solid 1px #111;
 
     border-radius:5px;
     box-shadow:0 0 5px 1px #111;
     padding:10px;
+*/
 }
 
-/* Circular Indicator */
+/* Chatbox */
+.chat {
+    float:left;
+    width:585px;
+
+    border-radius:4px 4px 0 0;
+    border:solid 1px #AAA;
+}
+
+.chat h3 {
+    font-weight:1em;
+    text-align:left;
+
+    color:#fff;
+
+    margin:0;
+    padding:1px 20px;
+    text-shadow:1px 1px 1px #111;
+
+    font-weight:normal;
+
+    background: #049cdb; /* Old browsers */
+    background: -moz-linear-gradient(top,  #049cdb 0%, #0064cd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#049cdb), color-stop(100%,#0064cd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #049cdb 0%,#0064cd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #049cdb 0%,#0064cd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #049cdb 0%,#0064cd 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #049cdb 0%,#0064cd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#049cdb', endColorstr='#0064cd',GradientType=0 ); /* IE6-9 */
+}
+
+.chat pre {
+    min-height:300px;
+    background:#111;
+    color:#fff;
+}
+
+.chat input {
+    width:100%;
+    border:none;
+}
+
+/* Performance Dashboard */
+#performance {
+    float:right;
+}
+
+#performance h2 { margin:0; }
+#performance h6 { margin:0; font-size:0.9em; }
+
 #performance > div {
     margin:0 20px 0 20px;
 }
 
-#performance > div > h4 {
-    font-family:'Century Gothic',futura,'URW Gothic L',Verdana,sans-serif;
+.ui-progressbar {
+    width:300px;
+    margin:0 auto;
+}
+
+.ui-progressbar span {
+    width:300px;
+    position:absolute;
+    text-align:center;
     font-weight:bold;
-    font-size:1.2em;
+    margin-top:5px;
 
-    color:#151515;
-    text-shadow:0 1px 1px #444;
+    color:#222;
 }
 
-#performance div.meter {
-    margin-left:2px;
+/*
+.ui-progressbar span.invert {
+    color:#FFF;
+    text-shadow:1px 1px 1px #222;
 }
+*/
 
+/*
 .meter {
     width:100px;
     height:100px;
 }
+*/
 
 .cprogress-text {
     /*font:18px/27px 'BebasNeueRegular', Arial, sans-serif;*/
@@ -135,6 +225,6 @@ body {
 }
 
 #nav a:hover, #nav a.selected {
-    color:#0552E0;/*#008CDB;*/
+    color:#046BDB;/*#0552E0;/*#008CDB;*/
     cursor:pointer;
 }

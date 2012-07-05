@@ -9,4 +9,10 @@ module.exports = SystemsController = function(app) {
 	    res.json(JSON.parse(body));
 	});
     });
+
+    app.get('/system/:server/status', function(req, res) {
+	request('http://localhost:9876/status/' + req.params.server + '?token=e0a39d05-a6b4-4514-bf16-504d99c5ee47', function(err, response, body) {
+	    res.json(JSON.parse(body));
+	});
+    });
 };
