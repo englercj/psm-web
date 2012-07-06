@@ -1,3 +1,33 @@
+.tab-icon {
+    height:16px;
+    width:16px;
+
+    position:absolute;
+    left:6px;
+    top:9px;
+
+    background:left top no-repeat transparent;
+}
+
+.tab-icon.dashboard { background-image:url(../img/icons/16/dashboard_grey.png); }
+.ui-tabs-selected .tab-icon.dashboard, .ui-state-hover .tab-icon.dashboard  { background-image:url(../img/icons/16/dashboard.png); }
+
+.tab-icon.console { background-image:url(../img/icons/16/console_grey.png); }
+.ui-tabs-selected .tab-icon.console, .ui-state-hover .tab-icon.console  { background-image:url(../img/icons/16/console.png); }
+
+.tab-icon.players { background-image:url(../img/icons/16/players_grey.png); }
+.ui-tabs-selected .tab-icon.players, .ui-state-hover .tab-icon.players  { background-image:url(../img/icons/16/players.png); }
+
+.tab-icon.worlds { background-image:url(../img/icons/16/worlds_grey.png); }
+.ui-tabs-selected .tab-icon.worlds, .ui-state-hover .tab-icon.worlds  { background-image:url(../img/icons/16/worlds.png); }
+
+.tab-icon.plugins { background-image:url(../img/icons/16/plugins_grey.png); }
+.ui-tabs-selected .tab-icon.plugins, .ui-state-hover .tab-icon.plugins  { background-image:url(../img/icons/16/plugins.png); }
+
+.tab-icon.updates { background-image:url(../img/icons/16/updates_grey.png); }
+.ui-tabs-selected .tab-icon.updates, .ui-state-hover .tab-icon.updates  { background-image:url(../img/icons/16/updates.png); }
+
+
 #nav a { background:center 10px no-repeat; }
 
 #nav a.dash { background-image:url(../img/icons/dashboard_grey.png); }

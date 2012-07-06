@@ -1,4 +1,5 @@
 (function($, win) {
+    //global util functions
     win.util = {
 	tagOutput: function(str) {
 	    str = util.tagStr(str, /([0-9\-: ]+)/, 'timestamp');
@@ -33,5 +34,14 @@
 	    });
 	}
     };
+
+    //some quick jquery funcs
+    $.fn.visible = function() {
+	return this.css('visibility', 'visible');
+    }
+
+    $.fn.invisible = function() {
+	return this.css('visibility', 'hidden');
+    }
 })(jQuery, window);
 	

@@ -11,13 +11,13 @@
         });
 
 	//Setup dashboard tabs
-	$('#content').tabs();
+	$('#main').tabs();
 
         //show loader on performance
-        $('#performance .loader').show();
+        //$('#performance .loader').show();
 
 	//setup ui buttons
-	$('button').button();
+	$('button,a.button').button();
 
         //setup listeners for socket
         setupSocketListeners();
@@ -28,7 +28,7 @@
 	//setup console control
 	setupConsole();
 
-	$('button').eq(1).button('disable');
+	$('a.button').eq(1).button('disable');
     });
 
     function setupConsole() {
@@ -51,8 +51,30 @@
 	api.socket.on('output', function(msg) {
 	    var $pre = $('#console pre');
 
+	    //add lines to console
 	    for(var i = 0, line; line = msg.lines[i]; ++i) {
 		$pre.append(util.tagOutput(line) + '\n');
+	    }
+
+	    //add notification if not selected
+	    var sel = $('#main').tabs('option', 'selected'),
+	    $a = $('#main > .ui-tabs-nav > li').eq(sel).find('a');
+
+	    if($a.attr('href') != '#console') {
+		$a = $('#main > .ui-tabs-nav > li > a[href="#console"]');
+
+		var $n = $a.find('span.notification');
+
+		//if we already have one, increment number
+		if($n.length) {
+		    var num = parseInt($n.text(), 10) + msg.lines.length;
+
+		    $n.text(num);
+		}
+		//otherwise create it
+		else {
+		    $a.append('<span class="notification">' + msg.lines.length + '</span>');
+		}
 	    }
 	});
 
@@ -70,16 +92,16 @@
             api.getServerStatus('crafttest', function(err, server) {
                 if(err) return;
 
-                var $info = $('#performance ul li.info'),
-		$players = $('#performance ul li.players'),
-		$system = $('#performance ul li.system'),
-		$ctrl = $('#performance ul li.control'),
+                var $info = $('#dashboard ul li.info'),
+		$players = $('#dashboard ul li.players'),
+		$system = $('#dashboard ul li.system'),
+		$ctrl = $('#dashboard ul li.control'),
 		totalCpuTime = 0,
                 idleCpuTime = 0;
 
                 //hide the loader
-                $('#performance .loader').hide();
-		$('#performance ul').show();
+                //$('#performance .loader').hide();
+		//$('#performance ul').show();
 
                 //server title
                 $('h2', $info).text(server.data.properties['server-name']);
@@ -105,21 +127,21 @@
                         max: data.status.maxPlayers || 32,
                         fmt: '{v} / {m}',
                         divisor: 1,
-			$meter: $('#players .meter')
+			$meter: $('.players .meter', $players)
                     },
                     {
                         val: totalCpuTime - idleCpuTime,
                         max: totalCpuTime,
                         fmt: '{p}%',
                         divisor: 1,
-			$meter: $('#cpu .meter')
+			$meter: $('.cpu .meter', $system)
                     },
                     {
                         val: data.status.totalmem - data.status.freemem,
                         max: data.status.totalmem,
                         fmt: '{v} / {m} MB',
                         divisor: 1048576,
-			$meter: $('#ram .meter')
+			$meter: $('.ram .meter', $system)
                     }
                 ];
 

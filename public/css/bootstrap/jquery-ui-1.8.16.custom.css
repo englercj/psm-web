@@ -554,7 +554,7 @@
   outline:none;
 }
 
-.ui-button-primary {
+.ui-widget-content .ui-button-primary, .ui-button-primary {
   color: #ffffff;
   background-color: #0064cd;
   background-repeat: repeat-x;
@@ -574,7 +574,7 @@
 
 
 
-.ui-button-success{
+.ui-widget-content .ui-button-success, .ui-button-success{
   color:#ffffff;
   background-color: #57a957;
   background-repeat: repeat-x;
@@ -591,7 +591,7 @@
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 
-.ui-button-error{
+.ui-widget-content .ui-button-error, .ui-button-error{
   color:#ffffff;
   background-color: #c43c35;
   background-repeat: repeat-x;

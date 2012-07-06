@@ -56,6 +56,40 @@ b { font-weight:bold; }
 .severe { color:orangered; }
 .fatal { color:red; }
 
+.well {
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 5px;
+}
+
+.notification {
+    font-size:10px;
+    font-weight:bold;
+    color:#FFF;
+
+    border-radius:10px;
+    padding:1px 5px;
+    height:12px;
+    line-height:12px;
+
+    position:absolute;
+    margin:0 0 0 -5px;
+    z-index:9999;
+
+    background: #ff3019; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ff3019 0%, #bf0000 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff3019), color-stop(100%,#bf0000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ff3019 0%,#bf0000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ff3019 0%,#bf0000 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ff3019 0%,#bf0000 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ff3019 0%,#bf0000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#bf0000',GradientType=0 ); /* IE6-9 */
+}
+
 /* Wrapper */
 #wrapper { width:1024px; margin:0 auto; }
 
@@ -75,24 +109,7 @@ b { font-weight:bold; }
     padding:20px;
 }
 
-.well {
-    background-color: #F5F5F5;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
-    margin-bottom: 20px;
-    min-height: 20px;
-    padding: 5px;
-
-/*
-    background:#333;
-    border:solid 1px #111;
-
-    border-radius:5px;
-    box-shadow:0 0 5px 1px #111;
-    padding:10px;
-*/
-}
+#main .ui-tabs-nav li a { padding-left:25px; }
 
 /* Console boxes */
 .chat {
@@ -136,19 +153,19 @@ b { font-weight:bold; }
 }
 
 /* Performance Dashboard */
-#performance h2 { margin:0; }
-#performance h4 { margin:0 0 5px 0; font-weight:bold; }
-#performance h5 { margin:0; font-size:1em; }
-#performance h6 { margin:0; font-size:0.9em; }
+#dashboard h2 { margin:0 0 10px 0; text-align:left; }
+#dashboard h4 { margin:0 0 5px 0; font-weight:bold; }
+#dashboard h5 { margin:0; font-size:1.1em; }
+#dashboard h6 { margin:0; font-size:1em; text-align:left; }
 
-#performance ul li {
+#dashboard ul li {
     list-style:none;
     float:left;
     width:25%;
 }
 
-#performance li.control { text-align:center; }
-#performance li.control button {
+#dashboard li.control { text-align:center; }
+#dashboard li.control .button {
     margin:2px 0;
     width:225px;
 }

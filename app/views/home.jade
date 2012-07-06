@@ -1,9 +1,28 @@
 extends layouts/default
 
 block content
-  div#performance.well
-    div.loader
-    ul.hidden
+  ul
+    li
+      span.tab-icon.dashboard
+      a(href="#dashboard") Dashboard
+    li
+      span.tab-icon.console
+      a(href="#console") Console
+    li
+      span.tab-icon.players
+      a(href="#players") Players
+    li
+      span.tab-icon.worlds
+      a(href="#worlds") Worlds
+    li
+      span.tab-icon.plugins
+      a(href="#plugins") Plugins
+    li
+      span.tab-icon.updates
+      a(href="#updates") Updates
+
+  div#dashboard
+    ul.ui-helper-clearfix
       li.info
         h2
         h6.mcversion
@@ -12,36 +31,35 @@ block content
           b Craftbukkit Build:
       li.players
         h4 Players
-        div#players
+        div.players
           h5 Players Connected
           div.meter
             span
       li.system
         h4 System
-        div#cpu
+        div.cpu
           h5 CPU Usage
           div.meter
             span
-        div#ram
+        div.ram
           h5 RAM Usage
           div.meter
             span
       li.control
         h4 Controls
-        button.ui-button-success Start Server
-        button.ui-button-error Stop Server
-        button.ui-button-primary Restart Server
-    br.clear
-  div#content
-    ul
-      li
-        a(href="#console") Console
-      li
-        a(href="#chat") Chat
-    div#console
-      pre
-      input
-    div#chat
-      pre
-      input
-  br.clear
+        a.button.ui-button-success Start Server
+        a.button.ui-button-error Stop Server
+        a.button.ui-button-primary Restart Server
+
+  div#console
+    pre
+    input
+
+  div#players
+
+  div#worlds
+
+  div#plugins
+
+  div#updates
+
